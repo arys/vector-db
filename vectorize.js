@@ -20,7 +20,7 @@ function vectorize(apartment, image) {
 
 async function main() {
   for (const apartment of data) {
-    const image = readFileSync(`./images/${apartment.id}.jpeg`)
+    const image = readFileSync(`./images/${apartment.id}.jpg`)
     await vectorize(apartment, image)
     console.log(`Apartment ${apartment.id} vectorized`)
   }
