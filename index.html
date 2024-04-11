@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <form>
+      <input type="file" name="image" id="file">
+      <button type="submit">Search</button>
+    </form>
+  </body>
+  <script>
+    document.querySelector('form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchImage();
+    });
+    function searchImage() {
+      const file = document.getElementById('file').files[0];
+      const formData = new FormData();
+      formData.append('image', file);
+      fetch('http://localhost:3005/image-search', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+    }
+  </script>
+</html>
